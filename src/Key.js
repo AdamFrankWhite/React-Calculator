@@ -1,11 +1,18 @@
 import React from 'react'
 
-function Key(props) {
-    return (
-        <div className="calc-key">
-            <span>{props.num}</span>
-        </div>
-    )
-}
+
+
+class Key extends React.Component {
+    render() {
+        return (
+                <div 
+                    className={`calc-key `} 
+                    onClick={() => this.props.clickHandler(this.props.num)} 
+                >
+                    <span>{this.props.num}</span>
+                </div>
+            )
+        }
+    }
 
 export default Key
