@@ -1,0 +1,6 @@
+Notes
+
+changed key hover from react handler to css, due to buggyness
+remember to bind methods in class components
+to pass data from child to parent, pass function as prop from parent to child
+which handling event in child, must pass method with parameter via an anonymous function, if you wish to pass para - see Key: line 10
