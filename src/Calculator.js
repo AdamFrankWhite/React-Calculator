@@ -7,25 +7,39 @@ class Calculator extends React.Component {
         super()
         this.state = {
             display: "",
-            calc: ""
+            calc: "",
+            history: []
         }
         this.appendCalc = this.appendCalc.bind(this)
         this.evaluate = this.evaluate.bind(this)
         this.clearDisplay = this.clearDisplay.bind(this)
         this.sqrt = this.sqrt.bind(this)
         this.backspace = this.backspace.bind(this)
+        this.back = this.back.bind(this)
+    }
+
+    back() {
+        this.setState(prevState => {
+            return {
+                display: prevState.display,
+                calc: prevState.calc,
+                history: prevState.history
+            }
+        })
+        console.log("ah")
     }
 
     clearDisplay() {
         this.setState( () => {
             return {
                 display: "",
-                calc: ""
+                calc: "",
+                history: ""
             }
         })
     }
     backspace() {
-        this.setState( (prevState) => {
+        this.setState( prevState => {
             return {
                 display: prevState.display.slice(0, -1),
                 calc: prevState.calc.slice(0, -1)
@@ -36,11 +50,11 @@ class Calculator extends React.Component {
     evaluate() {
         this.setState( () => {
             return {
-                display: eval(this.state.calc).toString().length < 10 ? eval(this.state.calc) : eval(this.state.calc).toPrecision(10),
-                calc: eval(this.state.calc)
+                display: eval(this.state.calc).toString().length < 10 ? eval(this.state.calc).toString() : eval(this.state.calc).toPrecision(10).toString(),
+                calc: eval(this.state.calc).toString(),
+                history: this.state.display.toString()
             }
         })
-        console.log(typeof this.state.calc)
         
     }
 
@@ -48,7 +62,7 @@ class Calculator extends React.Component {
         this.setState( prevState => {
             return {
                 display: prevState.display.length < 12 ? prevState.display + val : prevState.display,
-                calc: prevState.display.length < 12 ? prevState.calc + num : prevState.calc
+                calc: prevState.display.length < 12 ? prevState.calc + num : prevState.calc    
             }
         })
     } // this method is to be passed down to child
@@ -57,27 +71,31 @@ class Calculator extends React.Component {
         this.setState( prevState => {
             return {
                 display: Math.sqrt(prevState.display) % 1 === 0 ? Math.sqrt(prevState.display) : Math.sqrt(prevState.display).toPrecision(10) ,
-                calc: Math.sqrt(prevState.calc)
+                calc: Math.sqrt(prevState.display)
             }
             
         })
-        console.log(typeof this.state.calc)
-
-        
     }
+
+    // return {
+    //     display: Math.sqrt(prevState.display) % 1 === 0 ? Math.sqrt(prevState.display) : Math.sqrt(prevState.display).toPrecision(10) ,
+    //     calc: Math.sqrt(prevState.display)
+    // }
 
     render() {
         return (
             <div className="container">
                 <div className="row">
-                    <Display display={this.state.display} />
+                    <Display display={this.state.display} history={this.state.history}/>
                 </div>
                 <div className="row">
                     <Key num="<-" clickHandler={this.backspace} />
                     <Key num="+" val="+" clickHandler={this.appendCalc} />
+                    <Key num="-" val="-" clickHandler={this.appendCalc} />
                     <Key num="C" clickHandler={this.clearDisplay} />
                     <Key num="x" val="*" clickHandler={this.appendCalc}  />
                     <Key num="√" clickHandler={this.sqrt}  />
+                    <Key num="BACK" clickHandler={this.back} />
                 </div>
                 <div className="row">
                     <Key num="1" val="1" clickHandler={this.appendCalc} />
@@ -104,3 +122,4 @@ class Calculator extends React.Component {
 }
 
 export default Calculator
+
