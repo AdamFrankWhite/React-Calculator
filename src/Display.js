@@ -9,9 +9,17 @@ function Display(props){
 
     }
     return (
-        <div className="display">
-            <h2 style={displayStyle}>{props.display}</h2>
+        <div className="display-cont">
+            <div className="display-calc">
+                <h2>{props.history}</h2>
+
+            </div>
+
+            <div className="display-main">
+                <h2 style={displayStyle}>{props.display}</h2>
+            </div>
         </div>
+       
     )
 }
 

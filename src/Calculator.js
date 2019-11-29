@@ -89,31 +89,37 @@ class Calculator extends React.Component {
                     <Display display={this.state.display} history={this.state.history}/>
                 </div>
                 <div className="row">
-                    <Key num="<-" clickHandler={this.backspace} />
-                    <Key num="+" val="+" clickHandler={this.appendCalc} />
-                    <Key num="-" val="-" clickHandler={this.appendCalc} />
-                    <Key num="C" clickHandler={this.clearDisplay} />
-                    <Key num="x" val="*" clickHandler={this.appendCalc}  />
-                    <Key num="√" clickHandler={this.sqrt}  />
-                    <Key num="BACK" clickHandler={this.back} />
+                    <Key num="(" val="(" clickHandler={this.appendCalc} color={"btnsmall maroon"} />
+                    <Key num=")" val=")" clickHandler={this.appendCalc} color={"btnsmall maroon"}  />
+                    <Key num="^" val="**" clickHandler={this.appendCalc} color={"btnsmall maroon"}  />      
+                    <Key num="√" clickHandler={this.sqrt} color={"btnsmall maroon"}  /> 
+                    <Key num="<-" clickHandler={this.backspace} color={"btnsmall maroon"} />
+                    <Key num="C" clickHandler={this.clearDisplay} color={"btnsmall maroon"} />                   
                 </div>
                 <div className="row">
-                    <Key num="1" val="1" clickHandler={this.appendCalc} />
-                    <Key num="2" val="2" clickHandler={this.appendCalc} />
-                    <Key num="3" val="3" clickHandler={this.appendCalc} />
-                    <Key num="^" val="**" clickHandler={this.appendCalc}  />
-                </div>
-                <div className="row">
-                    <Key num="4" val="4"  clickHandler={this.appendCalc} />
-                    <Key num="5" val="5" clickHandler={this.appendCalc} />
-                    <Key num="6" val="6" clickHandler={this.appendCalc} />
+                    <Key num="7" val="7" clickHandler={this.appendCalc} color={"black"} />
+                    <Key num="8" val="8"clickHandler={this.appendCalc} color={"black"} />
+                    <Key num="9" val="9"clickHandler={this.appendCalc} color={"black"} />
                     <Key num="÷" val="/" clickHandler={this.appendCalc} />
                 </div>
                 <div className="row">
-                    <Key num="7" val="7" clickHandler={this.appendCalc} />
-                    <Key num="8" val="8"clickHandler={this.appendCalc} />
-                    <Key num="9" val="9"clickHandler={this.appendCalc} />
-                    <Key num="=" clickHandler={this.evaluate}/>
+                    <Key num="4" val="4"  clickHandler={this.appendCalc} color={"black"} />
+                    <Key num="5" val="5" clickHandler={this.appendCalc} color={"black"} />
+                    <Key num="6" val="6" clickHandler={this.appendCalc} color={"black"} />
+                    <Key num="x" val="*" clickHandler={this.appendCalc} />                
+                </div>                       
+                <div className="row">
+                    <Key num="1" val="1" clickHandler={this.appendCalc} color={"black"}  />
+                    <Key num="2" val="2" clickHandler={this.appendCalc} color={"black"} />
+                    <Key num="3" val="3" clickHandler={this.appendCalc} color={"black"} />
+                    <Key num="-" val="-" clickHandler={this.appendCalc} />
+                    
+                </div>
+                <div className="row">
+                    <Key num="0" val="0" clickHandler={this.appendCalc} color={"black"} />
+                    <Key num="." val="." clickHandler={this.appendCalc} color={"black"} />
+                    <Key num="=" clickHandler={this.evaluate} color={"orange"}/>
+                    <Key num="+" val="+" clickHandler={this.appendCalc} />
                 </div>
                 
                 

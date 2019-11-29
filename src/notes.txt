@@ -1,6 +1,34 @@
 Notes
 
 changed key hover from react handler to css, due to buggyness
+
 remember to bind methods in class components
-to pass data from child to parent, pass function as prop from parent to child
+
+to pass data from child to parent, pass function as prop from parent to child - see https://stackoverflow.com/questions/41369497/passing-a-function-with-parameters-through-props-on-reactjs
+
 which handling event in child, must pass method with parameter via an anonymous function, if you wish to pass para - see Key: line 10
+
+bug: after using sqrt, continuing a calc with the answer returns NaN: 
+solved - evaluate method was missing update to calc prop
+
+bug: numbers too long 
+solved: using .toPrecision()
+
+bug: digits go off screen
+solution: need to display part of calc above, then have limit of digits on screen
+
+bug: multiply single digit numbers giving floats
+solution: toPrecision() conditional used on number, not string, so had no length, so auto evaluating to false see Calculator line 39
+
+bug: after evaluate method called, freezes - used to work fine. doesn't happen with sqrt method
+solution: evaulate needed to set state with toString, otherwise then trying to append strings to numbers, nothing happens because no error displayed 
+
+bug: after evaluate next append doesnt clear display
+
+bug: sqrt negatve num needs error message
+
+Features:
+
+maintains calculation separately from display, to keep accuracy behind the scenes, whilst keeping limited digits on display
+
+
